@@ -1,23 +1,31 @@
-from models import Item
-from version_A.tests import test_prices
-from version_A.utils import print_separator
+"""
+Main script to run tests on item pricing and print the pricing information for items.
+"""
 
-items_pricing = {
-    'A': Item('A', 50, special_price=130, special_qty=3),
-    'B': Item('B', 30, special_price=45, special_qty=2),
-    'C': Item('C', 20),
-    'D': Item('D', 15)
-}
+from version_A.checkout_system import price
+from version_A.items_pricing import items_pricing
+from version_A.utils import print_items
 
 
-def print_items():
-    print("Esecuzione di test sui seguenti Item pricing:")
-    print_separator(40)
-    for key, value in items_pricing.items():
-        print(value)
-    print_separator(40)
+def get_user_cart() -> str:
+    """
+    Prompt the user to enter their cart items.
+
+    Returns:
+        str: String representing the user's cart.
+    """
+    user_cart = input("Enter your cart items (e.g., 'ABCD'): ")
+    return user_cart
 
 
-if __name__ == '__main__':
+def main():
+    """
+    Main function to handle checkout operations.
+    """
     print_items()
-    test_prices(items_pricing)
+    user_cart = get_user_cart()  # Prompt user to enter cart items
+    price(items_pricing, user_cart)  # Calculate total price
+
+
+if __name__ == "__main__":
+    main()
