@@ -3,10 +3,10 @@ from typing import Dict
 from version_A.models import Item
 
 """
-This module implements functions for a checkout system.
+This module implements business logic functions for the checkout system.
 
 Functions:
-    price: Calculate the total price of the user's cart.
+    price: Create total items in cart, calculate the total price of the user's cart.
     scan: Add an item to the cart by its SKU.
     calculate_total: Calculate the total price for all items in the cart.
 """
@@ -14,7 +14,7 @@ Functions:
 
 def price(pricing_rules: Dict[str, Item], user_cart: str) -> int:
     """
-    Calculate the total price of the user's cart.
+    Create total items in cart, then calculate the total price of the user's cart.
 
     Args:
         pricing_rules (Dict[str, Item]): Dictionary containing pricing rules for items.
@@ -66,16 +66,16 @@ def calculate_total(totals_cart: Dict[str, int], pricing_rules: Dict[str, Item])
     """
     total_price = 0
     not_valid_skus = list()
-    for sku, qty in totals_cart.items():
+    for sku, quantity in totals_cart.items():
         if sku in pricing_rules:
             item = pricing_rules[sku]
-            if item.special_qty and qty >= item.special_qty:
+            if item.special_qty and quantity >= item.special_qty:
                 # Calculate the number of times the special offer applies and the remaining quantity
-                special_count = qty // item.special_qty
-                remaining_qty = qty % item.special_qty
+                special_count = quantity // item.special_qty
+                remaining_qty = quantity % item.special_qty
                 total_price += special_count * item.special_price + remaining_qty * item.unit_price
             else:
-                total_price += qty * item.unit_price
+                total_price += quantity * item.unit_price
         else:
             not_valid_skus.append(sku)
 

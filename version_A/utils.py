@@ -1,5 +1,5 @@
 """
-This script contains utility functions used in the checkout system.
+This script contains utility functions.
 """
 from version_A.items_pricing import items_pricing
 
@@ -22,3 +22,15 @@ def print_items():
     for key, value in items_pricing.items():
         print(value)
     print_separator(40)
+
+
+def print_items_decorator(func):
+    """Decorator for handling items_pricing on annotated functions."""
+
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        print_items()
+        response = func(*args, **kwargs)
+        return response
+
+    return wrapper

@@ -18,11 +18,11 @@ def get_user_cart() -> str:
     return user_cart
 
 
+@print_items_decorator
 def main():
     """
     Main function to handle checkout operations.
     """
-    print_items()
     user_cart = get_user_cart()  # Prompt user to enter cart items
     price(items_pricing, user_cart)  # Calculate total price
 

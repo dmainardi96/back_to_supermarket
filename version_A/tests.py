@@ -58,6 +58,10 @@ def test_prices(items_pricing: Dict[str, Item]) -> None:
     print("Test DABABA passed\n")
 
 
-if __name__ == '__main__':
-    print_items()  # Print pricing information
+@print_items_decorator
+def main():
     test_prices(items_pricing)  # Run tests on item pricing
+
+
+if __name__ == '__main__':
+    main()

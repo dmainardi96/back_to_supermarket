@@ -4,7 +4,7 @@ This repository contains a simple checkout system implemented in Python. The app
 
 The project has two versions: Version A is implemented with simple Python scripts, while Version B is a Django application with a more structured database modeling to handle more scenarios.
 
-#Version A
+## --- Version A ---
 
 ## Testing checkout
 
