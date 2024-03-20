@@ -4,6 +4,8 @@ This repository contains a simple checkout system implemented in Python. The app
 
 The project has two versions: Version A is implemented with simple Python scripts, while Version B is a Django application with a more structured database modeling to handle more scenarios.
 
+Screenshots of passed tests can be found in documentation folder.
+
 ## --- Version A ---
 
 ## Testing checkout
@@ -12,7 +14,7 @@ To run tests, follow these steps:
 
 1. Ensure you have Python 3.8 installed on your system.
 2. Clone this repository to your local machine.
-3. Navigate to the project directory.
+3. Navigate to the project directory (version_A).
 4. Run the `tests.py` file using Python 3.8:
 
    ```
@@ -113,3 +115,26 @@ The code is divided into the following files:
 - `checkout_system.py`: Contains functions that handle the calculation of cart prices based on `items_pricing`.
 - `models.py`: Contains classes that map real-world objects, in this case, only `Item`.
 
+## --- Version B ---
+
+This version implements a django alternative with simple data modeling.
+![](version_B/django_supermarket/models.png)
+
+- Each Item can have multiple Prices valid depending on the date.
+- Each Item can have multiple Discounts applicable to it depending on the date.
+
+## Testing checkout
+
+To run tests, follow these steps:
+
+1. Navigate to the project directory (version_B > django_supermarket).
+2. Install a venv with requirements.txt.
+3. Run `python manage.py test checkout      `
+
+## Code Structure
+
+The checkout app contains:
+
+- `checkout_system.py`: Contains the class for price calculation. It handles query on db to get item prices.
+- `models.py`: Contains the three django models.
+- `tests.py`: Contains assert for tests.

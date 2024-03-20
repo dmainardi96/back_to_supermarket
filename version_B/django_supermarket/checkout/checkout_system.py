@@ -74,9 +74,10 @@ class CheckoutSystem:
                 item = self.pricing_rules[sku]
                 if item["discount_quantity"] and quantity >= item["discount_quantity"]:
                     # Apply discount if applicable
-                    special_count = quantity // item["discount_quantity"]
-                    remaining_qty = quantity % item["discount_quantity"]
-                    total_price += special_count * item["discount_value"] + remaining_qty * item["price"]
+                    # Calculate the number of times the special offer applies and the remaining quantity
+                    # Eg. 4 A -> Discount of 3 A + Single A price
+                    special_count, remaining_qty = divmod(quantity, item["discount_quantity"])
+                    total_price += (special_count * item["discount_value"]) + (remaining_qty * item["price"])
                 else:
                     total_price += quantity * item["price"]
             else:

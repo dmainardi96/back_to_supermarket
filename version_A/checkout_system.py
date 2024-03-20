@@ -27,7 +27,6 @@ def price(pricing_rules: Dict[str, Item], user_cart: str) -> int:
     for element in user_cart:
         totals_cart = scan(element, totals_cart)
 
-    print(f"Total elements in cart: {totals_cart}")
     total_price = calculate_total(totals_cart, pricing_rules)
     print(f"Total price for your cart: {total_price}")
 
@@ -71,8 +70,8 @@ def calculate_total(totals_cart: Dict[str, int], pricing_rules: Dict[str, Item])
             item = pricing_rules[sku]
             if item.special_qty and quantity >= item.special_qty:
                 # Calculate the number of times the special offer applies and the remaining quantity
-                special_count = quantity // item.special_qty
-                remaining_qty = quantity % item.special_qty
+                # Eg. 4 A -> Discount of 3 A + Single A price
+                special_count, remaining_qty = divmod(quantity, item.special_qty)
                 total_price += special_count * item.special_price + remaining_qty * item.unit_price
             else:
                 total_price += quantity * item.unit_price
