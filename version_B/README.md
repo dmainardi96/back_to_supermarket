@@ -1,6 +1,7 @@
 # Version B
 
 This version implements a django alternative with simple data modeling.
+
 ![](django_supermarket/models.png)
 
 - Each Item can have multiple Prices valid depending on the date.
