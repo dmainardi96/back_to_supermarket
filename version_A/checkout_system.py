@@ -35,7 +35,7 @@ def price(pricing_rules: Dict[str, Item], user_cart: str) -> int:
 
 def scan(sku: str, totals_cart: Dict[str, int]) -> Dict[str, int]:
     """
-    Add an item to the cart by its SKU.
+    Add an item to the dictionary by its SKU.
 
     Args:
         sku (str): SKU of the item to add to the cart.
@@ -72,7 +72,9 @@ def calculate_total(totals_cart: Dict[str, int], pricing_rules: Dict[str, Item])
                 # Calculate the number of times the special offer applies and the remaining quantity
                 # Eg. 4 A -> Discount of 3 A + Single A price
                 special_count, remaining_qty = divmod(quantity, item.special_qty)
-                total_price += special_count * item.special_price + remaining_qty * item.unit_price
+                discounted_price = (special_count * item.special_price)
+                normal_price = (remaining_qty * item.unit_price)
+                total_price += discounted_price + normal_price
             else:
                 total_price += quantity * item.unit_price
         else:

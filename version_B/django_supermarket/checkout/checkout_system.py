@@ -50,6 +50,15 @@ class CheckoutSystem:
 
         return total_price
 
+    def _create_totals_cart(self) -> Dict[str, int]:
+        """
+        Create total items in cart.
+        """
+        totals_cart = dict()
+        for element in self.cart:
+            totals_cart = self.scan(element, totals_cart)
+        return totals_cart
+
     def scan(self, sku: str, totals_cart: Dict[str, int]) -> Dict[str, int]:
         """
         Add an item to the cart by its SKU.
@@ -77,7 +86,9 @@ class CheckoutSystem:
                     # Calculate the number of times the special offer applies and the remaining quantity
                     # Eg. 4 A -> Discount of 3 A + Single A price
                     special_count, remaining_qty = divmod(quantity, item["discount_quantity"])
-                    total_price += (special_count * item["discount_value"]) + (remaining_qty * item["price"])
+                    discounted_price = (special_count * item["discount_value"])
+                    normal_price = (remaining_qty * item["price"])
+                    total_price += discounted_price + normal_price
                 else:
                     total_price += quantity * item["price"]
             else:
@@ -87,12 +98,3 @@ class CheckoutSystem:
             print(f"Not valid skus: {not_valid_skus}")
 
         return total_price
-
-    def _create_totals_cart(self) -> Dict[str, int]:
-        """
-        Create total items in cart.
-        """
-        totals_cart = dict()
-        for element in self.cart:
-            totals_cart = self.scan(element, totals_cart)
-        return totals_cart

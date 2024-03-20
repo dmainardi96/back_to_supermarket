@@ -16,7 +16,6 @@ def print_separator(length):
 
 
 def print_items():
-    """Print pricing information for items."""
     print("Running on the following Item pricing:")
     print_separator(40)
     for key, value in items_pricing.items():
