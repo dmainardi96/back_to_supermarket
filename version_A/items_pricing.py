@@ -7,7 +7,7 @@ To update pricing:
 3. Update values for SKU, unit price, special price (if any), and special quantity (if any).
 """
 
-from version_A.models import Item
+from models import Item
 
 # Dictionary containing pricing information for items
 items_pricing = {

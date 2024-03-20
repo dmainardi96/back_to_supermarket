@@ -1,8 +1,8 @@
 """
 This script contains utility functions.
 """
-from version_A.items_pricing import items_pricing
-
+from items_pricing import items_pricing
+import functools
 
 def print_separator(length):
     """

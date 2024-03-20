@@ -1,6 +1,6 @@
 from typing import Dict
 
-from version_A.models import Item
+from models import Item
 
 """
 This module implements business logic functions for the checkout system.
@@ -79,5 +79,7 @@ def calculate_total(totals_cart: Dict[str, int], pricing_rules: Dict[str, Item])
         else:
             not_valid_skus.append(sku)
 
-    print(f"Not valid skus: {not_valid_skus}")
+    if not_valid_skus:
+        print(f"Not valid skus: {not_valid_skus}")
+
     return total_price

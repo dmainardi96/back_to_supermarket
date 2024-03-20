@@ -2,9 +2,9 @@
 Main script to run tests on item pricing and print the pricing information for items.
 """
 
-from version_A.checkout_system import price
-from version_A.items_pricing import items_pricing
-from version_A.utils import print_items
+from checkout_system import price
+from items_pricing import items_pricing
+from utils import print_items_decorator
 
 
 def get_user_cart() -> str:

@@ -3,10 +3,10 @@ This script contains test cases for the pricing function in the checkout system.
 """
 
 from typing import Dict
-from version_A.checkout_system import price
-from version_A.items_pricing import items_pricing
-from version_A.models import Item
-from version_A.utils import print_items
+from checkout_system import price
+from items_pricing import items_pricing
+from models import Item
+from utils import print_items_decorator
 
 
 def test_prices(items_pricing: Dict[str, Item]) -> None:
