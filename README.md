@@ -128,7 +128,7 @@ This version implements a django alternative with simple data modeling.
 To run tests, follow these steps:
 
 1. Navigate to the project directory (version_B > django_supermarket).
-2. Install a venv with requirements.txt.
+2. Install a venv with requirements.txt. `pip install -r requirements.txt`
 3. Run `python manage.py test checkout      `
 
 ## Code Structure
